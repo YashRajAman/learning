@@ -34,3 +34,7 @@ print(titanic_df.mean(numeric_only=True))
 
 # to sort the dataframe
 print(titanic_df.sort_values(by='age', ascending=True).head(5))
+
+
+
+
