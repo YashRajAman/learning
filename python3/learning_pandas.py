@@ -36,5 +36,21 @@ print(titanic_df.mean(numeric_only=True))
 print(titanic_df.sort_values(by='age', ascending=True).head(5))
 
 
+#selecting columns
+#df[column_name] return series
+#df[[column_name]] return dataframe
 
+print(titanic_df['age'].head())   #age is column name
+
+#multi column select
+print(titanic_df[['age', 'sex']].head()) 
+
+#orientation matters
+print(titanic_df[['sex', 'age']].head())
+
+#selecting using dot notation
+print(titanic_df.age.head())
+
+#dot notation and square bracket returns same resultsps 
+print(titanic_df.age.equals(titanic_df['age']))
 
