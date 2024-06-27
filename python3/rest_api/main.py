@@ -1,7 +1,8 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Depends
 from fastapi.responses import FileResponse
 from numeric_calc import math_util as mu
 from models import item_base_model as bm
+from models import Books
 
 app = FastAPI()
 
@@ -36,15 +37,17 @@ async def favicon():
 
 
 # Body data without any class 
-@app.post("/myanyitemasstring/")
-def get_str_item(item: str):
-    print(item)
-    return {'item':item}
 
+# Below application is not working as expected
 # @app.post("/myanyitemasstring/")
-# async def get_str_item(request: Request):
-#     body = await request.body()
-#     return body.decode("utf-8")
+# def get_str_item(item: str):
+#     print(item)
+#     return {'item':item}
+
+@app.post("/myanyitemasstring/")
+async def get_str_item(request: Request):
+    body = await request.body()
+    return body.decode("utf-8")
 
 
 
@@ -55,11 +58,8 @@ def get_dict_item(item: dict):
 
 
 # Body json data with class
-Item = bm.Item
+# Item = bm.Item
 @app.post("/myitem/")
-def create_item(item: Item):
-    print("Yeah...")
+def create_item(item: bm.Item):
     return item
 
-
-#use depends for depedency injection
