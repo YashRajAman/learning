@@ -1,9 +1,13 @@
+import sys
+sys.path.append('/home/yash/MyWorkSpace/learning/python3')
+
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Float
+from db_ops.conn_pools import engine
 
 Base = declarative_base()
 
-class Books(Base):
+class BooksModel(Base):
     __tablename__ = 'Books'
 
     id = Column(Integer, primary_key=True, autoincrement="auto")
@@ -35,3 +39,5 @@ class Books(Base):
     def delete(self, session):
         session.delete(self)
         session.commit()
+
+#Base.metadata.create_all(engine)
