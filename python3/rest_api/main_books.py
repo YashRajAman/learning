@@ -1,18 +1,24 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, Response, HTTPException
 from db_ops import conn_pools
 from models import books, Books
 import traceback
-import logging
-import sys
+# import logging
+import logging.config
+
 
 # Configure logging
-logging.basicConfig(
-    filename='app.log',  # Log to this file
-    level=logging.DEBUG,  # Log all levels (DEBUG and above)
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+# logging.basicConfig(
+#     filename='app.log',  # Log to this file
+#     level=logging.DEBUG,  # Log all levels (DEBUG and above)
+#     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+# )
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
+
+
+logging.config.fileConfig('logging.conf', disable_existing_loggers=False)
+
+
 
 app = FastAPI()
 
@@ -43,34 +49,38 @@ def add_book(book: books.BookSchema, db = Depends(conn_pools.get_db)) :
 @app.post("/getbook")
 def get_book(book: books.ResponseBookSchema, db = Depends(conn_pools.get_db)):
     try:
-        logger.info("Starting to get a book using filter.")
+        # logger.info("Starting to get a book using filter.")
         print(book)
         responseEntity = books.ResponseBookSchema()
         response = None
         if book.id:
-            logger.info("Checking with book id.")
+            # logger.info("Checking with book id.")
             response = db.query(Books.BooksModel).filter(Books.BooksModel.id==book.id).first()
         elif book.name:
-            logger.info("Checking with book name.")
+            # logger.info("Checking with book name.")
             response = db.query(Books.BooksModel).filter(Books.BooksModel.name==book.name).first()
         elif book.author:
-            logger.info("Checking with book author.")
+            # logger.info("Checking with book author.")
             response = db.query(Books.BooksModel).filter(Books.BooksModel.author==book.author).first()
         elif book.isbn:
             print(book.isbn)
-            logger.info("Checking with book isbn.")
+            # logger.info("Checking with book isbn.")
             response = db.query(Books.BooksModel).filter(Books.BooksModel.isbn==book.isbn).first()
-        responseEntity.id = response.id
-        responseEntity.name = response.name
-        responseEntity.author = response.author
-        responseEntity.isbn = response.isbn
-        responseEntity.price = response.price
-        
+
+        if response:
+            responseEntity.id = response.id
+            responseEntity.name = response.name
+            responseEntity.author = response.author
+            responseEntity.isbn = response.isbn
+            responseEntity.price = response.price
+        else:
+            responseEntity = {"Message":"Book not found with requested details."}
+            return responseEntity
         # print(type(response))
         # print(response)
 
         return responseEntity
-    except:
-        logger.error(traceback.format_exc())
-        sys.exit(1)
+    except Exception as e:
+        # logger.error(traceback.format_exc())
         traceback.print_exc()
+        raise HTTPException(500, detail=str(e))
