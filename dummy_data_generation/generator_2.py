@@ -1,6 +1,31 @@
 import random
 import pandas as pd
 from faker import Faker
+import string
+
+def generate_dummy_us_license(state_code):
+    """Generate a random dummy US driving license number."""
+    numeric_part = ''.join(random.choices(string.digits, k=7))  # 7 digits
+    return f"{state_code}{numeric_part}"
+
+def generate_dummy_uk_license(code):
+    """Generate a random dummy UK driving license number."""
+    letters = ''.join(random.choices(string.ascii_uppercase, k=2))  # 2 letters
+    digits = ''.join(random.choices(string.digits, k=6))            # 6 digits
+    check_letter = random.choice(string.ascii_uppercase)            # 1 letter
+    return f"{letters}{digits}{check_letter}"
+
+def generate_dummy_germany_license(code):
+    """Generate a random dummy German driving license number."""
+    state_initial = random.choice(string.ascii_uppercase)  # 1 letter
+    numeric_part = ''.join(random.choices(string.digits, k=7))  # 7 digits
+    return f"{state_initial}{numeric_part}"
+
+def generate_dummy_france_license(code):
+    """Generate a random dummy French driving license number."""
+    return ''.join(random.choices(string.digits, k=13))  # 13 digits
+
+driving_license = [generate_dummy_us_license,generate_dummy_uk_license,generate_dummy_germany_license,generate_dummy_france_license]
 
 fake = Faker()
 
@@ -35,7 +60,7 @@ def generate_dummy_itin():
 # print("Dummy ITIN:", dummy_itin)
 
 
-print(fake.ssn(), fake.ein(), fake.itin())
+# print(fake.ssn(), fake.ein(), fake.itin())
 
 
 df = pd.read_csv("dummy_data_generation/sample_output_data_1.csv")
@@ -46,19 +71,41 @@ data_length = len(df.index)
 SSN = []
 EIN = []
 ITIN = []
-ADDRESS = []
+STREET_ADDRESS = []
+STATE = []
+COUNTRY = []
+BirthPlace = []
+PassportInfo = []
+CITY = []
+DrivingLicense = []
+
+
+
 
 for i in range(data_length):
     SSN.append(fake.ssn())
     EIN.append(fake.ein())
     ITIN.append(fake.itin())
-    ADDRESS.append(fake.address())
+    STREET_ADDRESS.append(fake.street_address())
+    STATE.append(fake.state())
+    COUNTRY.append(fake.country())
+    BirthPlace.append(fake.city())
+    PassportInfo.append(fake.passport_full())
+    CITY.append(fake.city())
+    DrivingLicense.append(random.choice(driving_license)(fake.state_abbr()))
 
-df['Address'] = ADDRESS
-df['SSN'] = SSN
+
+
+
+df['BirthPlace']     = BirthPlace
+df['Streed_Address'] = STREET_ADDRESS
+df['State']          = STATE
+df['Country']        = COUNTRY
+df['SSN']            = SSN
 df['Employer_ID_No'] = EIN
-df['TAXID'] = ITIN
-
+df['TAXID']          = ITIN
+df['PassportInfo']   = PassportInfo
+df['DriverLicense']  = DrivingLicense
 
 
 
