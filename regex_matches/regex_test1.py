@@ -262,6 +262,9 @@ for x in vehicle_registration_examples:
 full_regex = '|'.join(full_regex)
 
 # print(full_regex)
+print(len(full_regex))
+with open("regex_matches/regex_file.txt", "w+") as file:
+    file.write(full_regex)
 
 pattern = re.compile(fr"{full_regex}", re.IGNORECASE)
 

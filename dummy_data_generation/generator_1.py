@@ -2,10 +2,11 @@ import random
 import pandas as pd
 import random
 from bank_acc_generator import generate_bank_account_number
+from faker import Faker
 
-df = pd.read_csv("dummy_data_generation/sample_output_data.csv")
 
-data_length = len(df.index)
+fake = Faker()
+
 
 def generate_debit_card_number(bin):
     """
@@ -39,7 +40,8 @@ def generate_random_bin(x):
     for _ in range(x):
         bin = ''.join(random.choice('0123456789') for i in range(6))
         yield bin
-        
+
+
 def generate_card_exp_date():
     """
     Generate card expiry date in MM/yy format. eg. 10/29
@@ -47,9 +49,21 @@ def generate_card_exp_date():
     month = random.randint(1,12)
     year = random.randint(15, 50)
     return f"{month}/{year}"
-    
+
+
 def generate_cvv():
     return random.randint(100, 999)
+
+
+
+
+df = pd.read_csv("dummy_data_generation/sample_output_data.csv")
+
+data_length = len(df.index)
+
+credit_cards_types = ['maestro', 'mastercard', 'visa16', 'visa13', 'visa19', 'amex', 'discover', 'diners', 'jcb15', 'jcb16']
+
+# print(fake.credit_card_number(random.choice(credit_cards_types)))
 
 
 # Generate a list of 100 dummy bins
@@ -59,14 +73,26 @@ df['debit_card_expiry'] = [generate_card_exp_date() for x in range(data_length)]
 df['debit_card_cvv'] = [generate_cvv() for x in range(data_length)]
 
 
-bins = generate_random_bin(data_length)
-df['credit_card_no'] = [generate_debit_card_number(bin) for bin in bins]
-df['credit_card_expiry'] = [generate_card_exp_date() for x in range(data_length)]
-df['credit_card_cvv'] = [generate_cvv() for x in range(data_length)]
-# Generate 100 debit card numbers with the dummy bins
-# debit_card_numbers = [generate_debit_card_number(bin) for bin in bins]
+# bins = generate_random_bin(data_length)
+# df['credit_card_no'] = [generate_debit_card_number(bin) for bin in bins]
+# df['credit_card_expiry'] = [generate_card_exp_date() for x in range(data_length)]
+# df['credit_card_cvv'] = [generate_cvv() for x in range(data_length)]
+credit_card_number = []
+credit_card_expiry = []
+credit_card_cvv    = []
 
+for x in range(data_length):
+    cc_details = fake.credit_card_full(random.choice(credit_cards_types))
+    cc_details = cc_details.split('\n')
+    credit_card_number.append(cc_details[2].split(' ')[0])
+    credit_card_expiry.append(cc_details[2].split(' ')[1])
+    credit_card_cvv.append(cc_details[3].split(' ')[1])
 
+#cvv is also called cid
+
+df['credit_card_no']      = credit_card_number
+df['credit_card_expiry']  = credit_card_expiry
+df['credit_card_cvv']     = credit_card_cvv
 
 #bank account number
 # Example usage:
@@ -79,3 +105,8 @@ print(df.head())
 print(df.tail())
 
 df.to_csv('dummy_data_generation/sample_output_data_1.csv', index=False)
+
+
+# sex,name,age,date_of_birth,email,phone,debit_card_no,debit_card_expiry,debit_card_cvv,
+# credit_card_no,credit_card_expiry,credit_card_cvv,bank_account_no
+

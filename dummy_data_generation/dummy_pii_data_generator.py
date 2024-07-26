@@ -3,12 +3,14 @@ import pandas as pd
 import random
 from datetime import datetime, timedelta
 from email_domains import email_domains
-from phone_codes import country_codes
 from faker import Faker
 import re
+from surnames import name_suffixes, maiden_names
 
 # Create a Faker instance
 fake = Faker()
+
+columns_ordered = ['suffix','first_names','middle_names','last_names','full_name','nick_name','mothers_maiden_name','age','date_of_birth','sex','email','phone']
 
 def random_date(start_date, end_date):
     """
@@ -44,11 +46,22 @@ df = pd.read_csv("dummy_data_generation/all-names.csv", delimiter=',', usecols=[
 
 data_length = len(df.index)
 
-df["age"] = [get_age(start_age, end_age) for x in range(data_length)]
-df['date_of_birth'] = [random_date(Start_date, end_date) for x in range(data_length)]
-df['email'] = [name.lower()+"@"+random.choice(email_domains) for name in df['name']]
-df['phone'] = [generate_phone_number_with_country_code() for x in range(data_length)]
 
+first_names = pd.read_csv("dummy_data_generation/first_names.csv")['first_names'].values.tolist()
+last_names = pd.read_csv("dummy_data_generation/last_names.csv")['last_names'].values.tolist()
+
+df['suffix']        = [random.choice(name_suffixes) for x in range(data_length)]
+df['first_names']   = [random.choice(first_names) for x in range(data_length)]
+df['middle_names']  = [random.choice(last_names+first_names) for x in range(data_length)]
+df['last_names']    = [random.choice(last_names) for x in range(data_length)]
+df['full_name']     = df[["first_names", "middle_names", "last_names"]].apply(lambda row: ' '.join(row.values.astype(str)), axis=1)
+df['mothers_maiden_name'] = [random.choice(maiden_names) for x in range(data_length)]
+df["age"]           = [get_age(start_age, end_age) for x in range(data_length)]
+df['date_of_birth'] = [random_date(Start_date, end_date) for x in range(data_length)]
+df['email']         = [name.lower()+"@"+random.choice(email_domains) for name in df['name']]
+df['phone']         = [generate_phone_number_with_country_code() for x in range(data_length)]
+
+df.rename(columns={'name':'nick_name'}, inplace=True)
 
 print(data_length)
 
