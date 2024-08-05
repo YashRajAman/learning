@@ -1,0 +1,27 @@
+UserApp:
+
+======================TABLES================
+
+user_authentication : table
+
+columns: user_id,       username,               password, secret_passkey
+type:    pk generated, text candidate key,     text,     text
+
+
+user_details : table
+
+columns: user_id, name, contact, email, address, occupation, hobby, highest_qualification
+type:    text,   text, text,    text,  text,    text,       text,            text
+
+
+============================================
+Functions:
+============================================
+
+API 1:  Create unique userid using username, password and secret_passkey. Return the userid.  [DONE]
+
+API 2:  Create a jwt token using userid and password for that username for specific time (in minutes).  Return the jwt token [DONE]
+
+API 3:  Using the jwt token validate the details and if valid, return the user details for that user. [DONE]
+
+API 4:  Using the jwt token validation, generate fake details for that user. [DONE]
