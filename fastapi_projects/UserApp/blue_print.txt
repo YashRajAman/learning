@@ -15,7 +15,7 @@ type:    text,   text, text,    text,  text,    text,       text,            tex
 
 
 ============================================
-Functions:
+Functions: fastapi
 ============================================
 
 API 1:  Create unique userid using username, password and secret_passkey. Return the userid.  [DONE]
@@ -25,3 +25,58 @@ API 2:  Create a jwt token using userid and password for that username for speci
 API 3:  Using the jwt token validate the details and if valid, return the user details for that user. [DONE]
 
 API 4:  Using the jwt token validation, generate fake details for that user. [DONE]
+
+
+============================================
+Additional Functions:
+============================================
+
+Security Enhancements 
+
+Password Hashing [Aleardy Using bcrypt]: 
+Instead of storing passwords in plain text, consider using password hashing 
+algorithms like bcrypt, scrypt, or Argon2 to store hashed passwords. This will add an extra layer of security to your application.
+
+Token Blacklisting: 
+Implement a token blacklisting mechanism to revoke tokens when a user logs out or changes their password. This will prevent unauthorized access to user data.
+
+Rate Limiting: 
+Introduce rate limiting to prevent brute-force attacks on your APIs. You can use libraries like fastapi-limiter to achieve this.
+
+User Management
+
+User Profile Management: 
+Allow users to update their profile information, such as username, email, or password.
+
+User Role Management: 
+Introduce role-based access control (RBAC) to assign different roles to users, such as admin, moderator, or regular user.
+
+User Search: 
+Implement a search functionality to find users by username, email, or other criteria.
+
+Additional APIs
+
+Forgot Password: 
+Create an API to allow users to reset their passwords using a password reset token sent to their email.
+
+Email Verification: 
+Implement an API to send a verification email to users when they create an account or update their email address.
+
+Two-Factor Authentication: 
+Add an API to enable two-factor authentication (2FA) using Time-Based One-Time Passwords (TOTP) or HMAC-based One-Time Passwords (HOTP).
+
+Analytics and Logging
+
+User Activity Logging: 
+Log user activity, such as login attempts, password changes, or profile updates, to monitor user behavior and detect potential security threats.
+
+API Analytics: 
+Collect analytics on API usage, such as request frequency, response times, and error rates, to optimize your application's performance.
+
+Integrations
+
+Social Media Integration: 
+Allow users to log in using their social media accounts, such as Google, Facebook, or Twitter.
+
+Third-Party Service Integration: 
+Integrate your application with third-party services, such as payment gateways, to provide additional functionality.

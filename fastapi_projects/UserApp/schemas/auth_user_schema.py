@@ -6,6 +6,7 @@ from typing import Optional
 class create_user_req(BaseModel):
 
     user_id: Optional [str] = None
+    email: Optional [str] = None
     username: str
     password: str
     secret_key: str

@@ -1,0 +1,53 @@
+import pandas as pd
+import networkx as nx
+from dask import dataframe as dd
+from dask.distributed import Client, progress
+import os
+import glob
+
+# Initialize Dask client for parallel processing
+client = Client(n_workers=2, threads_per_worker=2, memory_limit='8GB')
+
+file_location = "/home/yash/Downloads/sk-2005"
+
+# Function to load edges in chunks and create a graph
+def load_edges_in_chunks(file_path):
+    # Create an empty graph
+    G = nx.Graph()
+    
+    # Load all CSV files in the directory
+    csv_files = glob.glob(os.path.join(file_path, '*.csv'))
+    
+    # Load the CSV files in parallel using Dask
+    ddf = dd.concat([dd.read_csv(file) for file in csv_files])
+    
+    # Compute the edges in parallel
+    edges = ddf.map_partitions(lambda df: [(row[0], row[1]) for row in df.itertuples(index=False)]).compute()
+    
+    # Add edges to the graph
+    G.add_edges_from([edge for chunk in edges for edge in chunk])
+    
+    return G
+
+# Function to find connected components (clusters)
+def find_clusters(G):
+    # Use NetworkX to find connected components
+    clusters = list(nx.connected_components(G))
+    return clusters
+
+# Main function to execute the script
+def main(file_path):
+    # Load the edges and create the graph
+    print("Loading edges from CSV...")
+    G = load_edges_in_chunks(file_path)
+    
+    print("Finding clusters...")
+    clusters = find_clusters(G)
+    
+    print(f"Number of clusters found: {len(clusters)}")
+    # Optionally, print the sizes of each cluster
+    for i, cluster in enumerate(clusters):
+        print(f"Cluster {i + 1}: Size {len(cluster)}")
+
+if __name__ == "__main__":
+    main(file_location)

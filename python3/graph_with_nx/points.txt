@@ -1,0 +1,6 @@
+correct the code with these points:
+
+1: Load all the edges using csv files in the location "file_location"
+2: The graph can be very large in size, use swap space or disk to compensate for that.
+3: Parallelize the data loading and function to run the things in parallel to optimize time constraint.
+4: Make as much time and space efficient as possible. Time is more important.
