@@ -1,19 +1,26 @@
 import traceback
 from fastapi import FastAPI, Depends
-import jwt
-from schemas.auth_user_schema import create_user_req, user_token_req
-from db_actions.db_pools import get_conn
+from schemas.auth_user_schema import create_user_req
+# from db_actions.db_pools import get_conn, conn_pool
+from db_actions.dbmgmt import dbPool
 from db_actions import user_auth_dao as auth_dao
 from utilities import jwt_auth
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 import uvicorn
+import config
 
-# from db_actions.test_conn import test_conn
-
-app = FastAPI()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
- 
+app = FastAPI(lifespan_hooks=True)
+
+
+dbObject = dbPool(host=config.host, database=config.database, user=config.user, password=config.password, options=config.options, port=config.port)
+
+app.add_event_handler("startup", dbObject.create_pool)
+app.add_event_handler("shutdown", dbObject.close_pool)
+get_conn = dbObject.get_conn
+
+
 @app.post("/createuser")
 def create_user(user:create_user_req, db = Depends(get_conn)):
     try:

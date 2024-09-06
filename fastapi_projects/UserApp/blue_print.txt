@@ -26,6 +26,8 @@ API 3:  Using the jwt token validate the details and if valid, return the user d
 
 API 4:  Using the jwt token validation, generate fake details for that user. [DONE]
 
+API 5:  Adding an api to update/upload a picture for every user using jwt token. Store the picture with name as user_id.jpg/png...
+
 
 ============================================
 Additional Functions:

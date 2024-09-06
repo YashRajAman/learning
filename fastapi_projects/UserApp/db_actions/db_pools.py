@@ -1,7 +1,7 @@
 from readline import read_init_file
 import psycopg2
 from psycopg2 import pool
-import db_actions.config as config
+import fastapi_projects.UserApp.config as config
 import traceback
 # psycopg2 connection pool creation
 
