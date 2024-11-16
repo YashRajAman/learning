@@ -1,0 +1,64 @@
+### Easy Questions
+1. Create a Spark Session:
+   - Write a code snippet to create a Spark session named "PracticeSession".
+   ==> spark = SparkSession.builder.appName("Learning 1").master("local[*]").getOrCreate()
+
+2. Create a DataFrame from a List:
+   - Create a DataFrame from a list of tuples containing names and ages.
+
+3. Read a CSV File:
+   - Write code to read a CSV file named `data.csv` into a DataFrame and display the first 5 rows.
+
+4. Show DataFrame Schema:
+   - After loading a DataFrame, use a method to print its schema.
+
+5. Select Specific Columns:
+   - From a DataFrame, select only the "name" and "age" columns and display the result.
+
+6. Filter Rows:
+   - Filter the DataFrame to show only rows where age is greater than 30.
+
+7. Count Rows:
+   - Count the number of rows in a DataFrame and print the result.
+
+8. Add a New Column:
+   - Add a new column "age_after_5_years" that adds 5 to the existing "age" column.
+
+9. Drop a Column:
+   - Write code to drop the "age" column from the DataFrame.
+
+10. Save DataFrame as JSON:
+    - Save the DataFrame as a JSON file named `output.json`.
+
+
+### Medium Questions
+11. Create a DataFrame from a JSON File:
+    - Load a JSON file named `data.json` into a DataFrame and display its contents.
+
+12. Group By and Aggregate:
+    - Group the DataFrame by "name" and count the number of occurrences for each name.
+
+13. Perform a Join:
+    - Create two DataFrames and perform an inner join on a common column.
+
+14. Handle Missing Values:
+    - Write code to fill missing values in the "age" column with the average age.
+
+15. Sort DataFrame:
+    - Sort the DataFrame by the "age" column in descending order.
+
+16. Use UDF (User  Defined Function):
+    - Create a UDF that takes a name and returns its length, and apply it to a "name" column.
+
+17. Convert DataFrame to RDD:
+    - Convert a DataFrame to an RDD and print the first 5 elements.
+
+18. Use `distinct()`:
+    - Use the `distinct()` method to find unique values in the "name" column.
+
+### Hard Questions
+19. Optimize a DataFrame:
+    - Write code to repartition a DataFrame to improve performance for a specific operation.
+
+20. Broadcast Variables:
+    - Create a broadcast variable and use it in a transformation on a DataFrame.
