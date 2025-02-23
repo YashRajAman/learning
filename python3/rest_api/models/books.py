@@ -1,19 +1,43 @@
-from pydantic import BaseModel
-from typing import Optional
+import sys
+sys.path.append('/home/yash/MyWorkSpace/learning/python3')
 
-class BookSchema(BaseModel):
-    id: Optional[int] = None
-    name: str
-    isbn: str
-    author: str
-    price: float
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, Float
+from db_ops.conn_pools import engine
 
-    class Config:
-        from_attributes = True
+Base = declarative_base()
 
-class ResponseBookSchema(BaseModel):
-    id: Optional[int] = None
-    name: Optional[str] = None
-    isbn: Optional[str] = None
-    author: Optional[str] = None
-    price: Optional[float] = None
+class BooksModel(Base):
+    __tablename__ = 'Books'
+
+    id = Column(Integer, primary_key=True, autoincrement="auto")
+    name = Column(String)
+    isbn = Column(String)
+    author = Column(String)
+    price = Column(Float)
+
+    def __repr__(self):
+        return f"Book(id={self.id}, name='{self.name}', isbn='{self.isbn}', author='{self.author}', price={self.price})"
+
+    def save(self, session):
+        session.add(self)
+        session.commit()
+
+    @classmethod
+    def get_by_id(cls, session, book_id):
+        return session.query(cls).filter_by(id=book_id).first()
+
+    @classmethod
+    def get_all(cls, session):
+        return session.query(cls).all()
+
+    def update(self, session, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+        session.commit()
+
+    def delete(self, session):
+        session.delete(self)
+        session.commit()
+
+#Base.metadata.create_all(engine)
