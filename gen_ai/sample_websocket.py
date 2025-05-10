@@ -38,9 +38,10 @@ html = """
 </html>
 """
 
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 async def get():
-    return HTMLResponse(html)
+    return html
+
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
@@ -48,9 +49,16 @@ async def websocket_endpoint(websocket: WebSocket):
     try:
         while True:
             data = await websocket.receive_text()
-            await websocket.send_text(f"Message text is: {data.capitalize()}")
+            if data:
+                await websocket.send_text(f"Server response: {data.capitalize()}")
+            else:
+                await websocket.send_text("Please enter a message.")
     except WebSocketDisconnect:
         print("Client disconnected")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        await websocket.close()
 
 
 if __name__=="__main__":

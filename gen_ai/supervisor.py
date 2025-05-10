@@ -6,6 +6,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.store.memory import InMemoryStore
 from langchain_core.tools import tool
 from csv_loader import get_collection
+from env import anthropic_api_key
 
 checkpointer = InMemorySaver()
 store = InMemoryStore()

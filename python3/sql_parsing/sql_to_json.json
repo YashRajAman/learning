@@ -1,0 +1,2889 @@
+[
+ {
+  "columns": [
+   "NY_ST_HCB_APCD_DQ_CLM_FILE_GID",
+   "RECORD_TYP",
+   "RECORD_TYP_VERSION",
+   "CLAIM_TYP",
+   "UCK_INFO_PRFIX",
+   "UCK_INFO_EC_ID_XX",
+   "UCK_INFO_SEG_NBR",
+   "REC_SEQ",
+   "SBMTR_SRVC_LINE_NBR",
+   "CLM0001",
+   "CLM0002",
+   "CLM0003",
+   "CLM0004",
+   "CLM0005",
+   "CLM0006",
+   "CLM0007",
+   "CLM0008",
+   "CLM0009",
+   "CLM0010",
+   "CLM0011",
+   "CLM0012",
+   "CLM0013",
+   "CLM0014",
+   "CLM0015",
+   "CLM0016",
+   "CLM0017",
+   "CLM0018",
+   "CLM0019",
+   "CLM0020",
+   "CLM0021",
+   "CLM0022",
+   "CLM0023",
+   "CLM0024",
+   "CLM0025",
+   "CLM0026",
+   "CLM0027",
+   "CLM0028",
+   "CLM0029",
+   "CLM0030",
+   "CLM0031",
+   "CLM0032",
+   "CLM0033",
+   "CLM0034",
+   "CLM0035",
+   "CLM0036",
+   "CLM0037",
+   "CLM0038",
+   "CLM0039",
+   "CLM0040",
+   "CLM0041",
+   "CLM0042",
+   "CLM0043",
+   "CLM0044",
+   "CLM0045",
+   "CLM0046",
+   "CLM0047",
+   "CLM0048",
+   "CLM0049",
+   "CLM0050",
+   "CLM0051",
+   "CLM0052",
+   "CLM0053",
+   "CLM0054",
+   "CLM0055",
+   "CLM0056",
+   "CLM0057",
+   "CLM0058",
+   "CLM0059",
+   "CLM0060",
+   "CLM0061",
+   "CLM0062",
+   "CLM0063",
+   "CLM0064",
+   "CLM0065",
+   "CLM0066",
+   "CLM0067",
+   "CLM0068",
+   "CLM0069",
+   "CLM0070",
+   "CLM0071",
+   "CLM0072",
+   "CLM0073",
+   "CLM0074",
+   "CLM0075",
+   "CLM0076",
+   "CLM0077",
+   "CLM0078",
+   "CLM0079",
+   "CLM0080",
+   "CLM0081",
+   "CLM0082",
+   "CLM0083",
+   "CLM0084",
+   "CLM0085",
+   "CLM0086",
+   "CLM0087",
+   "CLM0088",
+   "CLM0089",
+   "CLM0090",
+   "CLM0091",
+   "CLM0092",
+   "CLM0093",
+   "CLM0094",
+   "RPT_EXECN_DT",
+   "RPT_TYP_CD",
+   "RPT_PRD_STRT_DT",
+   "RPT_PRD_END_DT",
+   "INPUT_FILE_NM",
+   "PLAT_FORM_CD",
+   "RPT_ST_CD",
+   "REC_HIST_GID",
+   "REC_ADD_TS"
+  ],
+  "query": {
+   "select": [
+    {
+     "value": {
+      "add": [
+       "MAX_NY_ST_HCB_APCD_DQ_CLM_FILE_GID",
+       {
+        "over": {
+         "orderby": [
+          {
+           "value": "UCK_INFO_PRFIX"
+          },
+          {
+           "value": "UCK_INFO_EC_ID_XX"
+          },
+          {
+           "value": "SEQ_NO"
+          },
+          {
+           "value": "UCK_INFO_SEG_NBR"
+          }
+         ]
+        },
+        "value": {
+         "row_number": {}
+        }
+       }
+      ]
+     },
+     "name": "NY_ST_HCB_APCD_DQ_CLM_FILE_GID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1,
+        12
+       ]
+      }
+     },
+     "name": "CSV_0800_RECORD_TYP"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        13,
+        5
+       ]
+      }
+     },
+     "name": "CSV_0800_RECORD_TYP_VERSION"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        18,
+        8
+       ]
+      }
+     },
+     "name": "CSV_0800_CLAIM_TYP"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        26,
+        1
+       ]
+      }
+     },
+     "name": "UCK_INFO_PRFIX"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        27,
+        8
+       ]
+      }
+     },
+     "name": "UCK_INFO_EC_ID_XX"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        35,
+        2
+       ]
+      }
+     },
+     "name": "UCK_INFO_SEG_NBR"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        37,
+        4
+       ]
+      }
+     },
+     "name": "CSV_0800_REC_SEQ"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        41,
+        9
+       ]
+      }
+     },
+     "name": "CSV_0800_SBMT_SRVC_LN_NO"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        50,
+        1
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PRVDR_ENTY_TYP_QLFR_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        51,
+        60
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PRVDR_LAST_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        111,
+        35
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PRVDR_FRST_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        146,
+        25
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PRVDR_MDL_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        171,
+        10
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PRVDR_SFX_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        181,
+        80
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PRVDR_NPI_TXT"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        261,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PRVDR_SPCLT_INFO_REF_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        311,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PREV_SCNDRY_ID_RFRNC_ID_QLFR_01_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        314,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PRVDR_SCNDRY_ID_REF_01_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        364,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_OTHER_PAYER_PRM_REND_PRVDR_SCNDRY_01_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        414,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PREV_SCNDRY_ID_RFRNC_ID_QLFR_02_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        417,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PRVDR_SCNDRY_ID_REF_02_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        467,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_OTHER_PAYER_PRM_REND_PRVDR_SCNDRY_02_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        517,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PREV_SCNDRY_ID_RFRNC_ID_QLFR_03_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        520,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_REND_PRVDR_SCNDRY_ID_REF_03_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        570,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_OTHER_PAYER_PRM_REND_PRVDR_SCNDRY_03_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        620,
+        1
+       ]
+      }
+     },
+     "name": "CSV_0800_PRCHS_SRVC_PRVDR_NM_ENTY_TYP_QLFR_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        621,
+        80
+       ]
+      }
+     },
+     "name": "CSV_0800_PRCHS_SRVC_NPI"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        701,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_PRCHS_SRVC_PRVDR_SCNDRY_ID_QLFR_01_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        704,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_PRCHS_SRVC_PRVDR_SCNDRY_01_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        754,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_OTHER_PAYER_PRM_01_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        804,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_PRCHS_SRVC_PRVDR_SCNDRY_ID_QLFR_02_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        807,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_PRCHS_SRVC_PRVDR_SCNDRY_02_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        857,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_OTHER_PAYER_PRM_02_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        907,
+        60
+       ]
+      }
+     },
+     "name": "CSV_0800_SRVC_FCLTY_LCTN_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        967,
+        80
+       ]
+      }
+     },
+     "name": "CSV_0800_SRVC_FCLTY_NPI"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1047,
+        55
+       ]
+      }
+     },
+     "name": "CSV_0800_SRVC_FCLTY_LCTN_ADDR_LINE_1_TXT"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1102,
+        55
+       ]
+      }
+     },
+     "name": "CSV_0800_SRVC_FCLTY_LCTN_ADDR_LINE_2_TXT"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1157,
+        30
+       ]
+      }
+     },
+     "name": "CSV_0800_SRVC_FCLTY_LCTN_CITY_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1187,
+        2
+       ]
+      }
+     },
+     "name": "CSV_0800_SRVC_FCLTY_LCTN_ST_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1189,
+        15
+       ]
+      }
+     },
+     "name": "CSV_0800_SRVC_FCLTY_LCTN_ZIP_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1204,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_SRVC_FCLTY_LCTN_CNTRY_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1207,
+        60
+       ]
+      }
+     },
+     "name": "CSV_0800_SRVC_FCLTY_LCTN_CNTRY_SUBDV_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1267,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_SRVC_FCLTY_LCTN_ID_QLFR_01_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1270,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_LAB_OR_FCLTY_01_SCNDRY_01_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1320,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_SRVC_FCLTY_LCTN_ID_QLFR_02_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1323,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_LAB_OR_FCLTY_01_SCNDRY_02_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1373,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_SRVC_FCLTY_LCTN_ID_QLFR_03_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1376,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_LAB_OR_FCLTY_01_SCNDRY_03_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1426,
+        60
+       ]
+      }
+     },
+     "name": "CSV_0800_SPVSG_SURGICAL_LAST_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1486,
+        35
+       ]
+      }
+     },
+     "name": "CSV_0800_SPVSG_SURGICAL_FRST_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1521,
+        25
+       ]
+      }
+     },
+     "name": "CSV_0800_SPVSG_SURGICAL_MDL_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1546,
+        10
+       ]
+      }
+     },
+     "name": "CSV_0800_SPVSG_SURGICAL_SFX_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1556,
+        80
+       ]
+      }
+     },
+     "name": "CSV_0800_SPVSG_SURGICAL_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1636,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_SPVSG_PRVDR_SCNDRY_ID_QLFR_01_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1639,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_SPVSG_PRVDR_SCNDRY_ID_REF_01_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1689,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_OTHER_PAYER_PRM_SPVSG_PREV_SCNDRY_01_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1739,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_SPVSG_PRVDR_SCNDRY_ID_QLFR_02_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1742,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_SPVSG_PRVDR_SCNDRY_ID_REF_02_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1792,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_OTHER_PAYER_PRM_SPVSG_PREV_SCNDRY_02_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1842,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_SPVSG_PRVDR_SCNDRY_ID_QLFR_03_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1845,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_SPVSG_PRVDR_SCNDRY_ID_REF_03_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1895,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_OTHER_PAYER_PRM_SPVSG_PREV_SCNDRY_03_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        1945,
+        60
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_LAST_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2005,
+        35
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_FRST_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2040,
+        25
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_MDL_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2065,
+        10
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_SFX_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2075,
+        80
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_NPI"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2155,
+        55
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_ADDR_LINE_1_TXT"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2210,
+        55
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_ADDR_LINE_2_TXT"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2265,
+        30
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_CITY_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2295,
+        2
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_ST_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2297,
+        15
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_ZIP_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2312,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_CNTRY_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2315,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_CNTRY_SUBDV_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2318,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_ID_QLFR_01_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2321,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_01_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2371,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_ID_QLFR_02_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2374,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_02_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2424,
+        60
+       ]
+      }
+     },
+     "name": "CSV_0800_ORDR_PRVDR_CNTCT_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2484,
+        2
+       ]
+      }
+     },
+     "name": "CSV_0800_CMNCT_NBR_QLFR_01_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2486,
+        256
+       ]
+      }
+     },
+     "name": "CSV_0800_CMNCT_1_TXT"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2742,
+        2
+       ]
+      }
+     },
+     "name": "CSV_0800_CMNCT_NBR_QLFR_02_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        2744,
+        256
+       ]
+      }
+     },
+     "name": "CSV_0800_CMNCT_2_TXT"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3000,
+        2
+       ]
+      }
+     },
+     "name": "CSV_0800_CMNCT_NBR_QLFR_03_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3002,
+        256
+       ]
+      }
+     },
+     "name": "CSV_0800_CMNCT_3_TXT"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3258,
+        60
+       ]
+      }
+     },
+     "name": "CSV_0800_RFRN_PRVDR_LAST_01_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3318,
+        35
+       ]
+      }
+     },
+     "name": "CSV_0800_REF_PRVDR_FRST_01_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3353,
+        25
+       ]
+      }
+     },
+     "name": "CSV_0800_RFRN_PRVDR_MDL_01_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3378,
+        10
+       ]
+      }
+     },
+     "name": "CSV_0800_RFRN_PRVDR_SFX_01_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3388,
+        10
+       ]
+      }
+     },
+     "name": "CSV_0800_RFRN_PRVDR_TIN_SSN_01_TXT"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3398,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_REF_PREV_SCNDRY_ID_RFRNC_ID_QLFR_01_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3401,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_RFRN_PRVDR_SCNDRY_ID_REF_01_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3451,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_REF_PREV_SCNDRY_ID_RFRNC_ID_QLFR_02_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3454,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_RFRN_PRVDR_SCNDRY_ID_REF_02_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3504,
+        60
+       ]
+      }
+     },
+     "name": "CSV_0800_RFRN_PRVDR_LAST_02_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3564,
+        35
+       ]
+      }
+     },
+     "name": "CSV_0800_REF_PRVDR_FRST_02_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3599,
+        25
+       ]
+      }
+     },
+     "name": "CSV_0800_RFRN_PRVDR_MDL_02_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3624,
+        10
+       ]
+      }
+     },
+     "name": "CSV_0800_RFRN_PRVDR_SFX_02_NM"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3634,
+        10
+       ]
+      }
+     },
+     "name": "CSV_0800_RFRN_PRVDR_TIN_SSN_02_TXT"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3644,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_REF_PREV_SCNDRY_ID_RFRNC_ID_QLFR_03_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3647,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_RFRN_PRVDR_SCNDRY_ID_REF_03_ID"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3697,
+        3
+       ]
+      }
+     },
+     "name": "CSV_0800_REF_PREV_SCNDRY_ID_RFRNC_ID_QLFR_04_CD"
+    },
+    {
+     "value": {
+      "trim": {
+       "substr": [
+        "LINE_DATA",
+        3700,
+        50
+       ]
+      }
+     },
+     "name": "CSV_0800_RFRN_PRVDR_SCNDRY_ID_REF_04_ID"
+    },
+    {
+     "value": "CURRENT_DATE"
+    },
+    {
+     "value": {
+      "literal": "D"
+     }
+    },
+    {
+     "value": "AUDT.RPT_STRT_DT"
+    },
+    {
+     "value": "AUDT.RPT_END_DT"
+    },
+    {
+     "value": "INPUT_FILE_NM"
+    },
+    {
+     "name": "PLAT_FORM_CD",
+     "value": {
+      "literal": "$$PLAT_FORM_CD"
+     }
+    },
+    {
+     "name": "RPT_ST_CD",
+     "value": {
+      "literal": "$$RPT_ST_CD"
+     }
+    },
+    {
+     "name": "REC_HIST_GID",
+     "value": "$$PRCS_RUN_GID"
+    },
+    {
+     "value": {
+      "current_timestamp": 0
+     }
+    }
+   ],
+   "from": [
+    "$$DB_LND.V_APCD_NY_CLM_NG_PRFSN_DQ",
+    {
+     "cross join": {
+      "value": "VOL_APCD_CLM_AUDT",
+      "name": "AUDT"
+     }
+    },
+    {
+     "cross join": {
+      "value": {
+       "select": {
+        "name": "MAX_NY_ST_HCB_APCD_DQ_CLM_FILE_GID",
+        "value": {
+         "coalesce": [
+          {
+           "max": "NY_ST_HCB_APCD_DQ_CLM_FILE_GID"
+          },
+          0
+         ]
+        }
+       },
+       "from": "$$DB_STG.V_NY_ST_HCB_APCD_DQ_CLM_FILE"
+      },
+      "name": "MAX_GID"
+     }
+    }
+   ],
+   "where": {
+    "and": [
+     {
+      "eq": [
+       "REC_SEQ",
+       {
+        "literal": "0800"
+       }
+      ]
+     },
+     {
+      "like": [
+       "CLAIM_TYP",
+       {
+        "literal": "%PROF%"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "insert": "$$DB_STG.V_NY_ST_HCB_APCD_DQ_CLM_FILE"
+ },
+ {
+  "columns": [
+   "CustomerID",
+   "ProductID",
+   "TotalQuantity",
+   "SaleDate"
+  ],
+  "query": {
+   "union_all": [
+    {
+     "select": [
+      {
+       "value": "CustomerID"
+      },
+      {
+       "value": "ProductID"
+      },
+      {
+       "value": "Quantity"
+      },
+      {
+       "value": "SaleDate"
+      }
+     ],
+     "from": "Sales.JanuarySales",
+     "where": {
+      "eq": [
+       "Region",
+       {
+        "literal": "North"
+       }
+      ]
+     }
+    },
+    {
+     "select": [
+      {
+       "value": "CustomerID"
+      },
+      {
+       "value": "ProductID"
+      },
+      {
+       "value": "Quantity"
+      },
+      {
+       "value": "SaleDate"
+      }
+     ],
+     "from": "Sales.FebruarySales",
+     "where": {
+      "eq": [
+       "Region",
+       {
+        "literal": "North"
+       }
+      ]
+     }
+    },
+    {
+     "select": [
+      {
+       "value": "CustomerID"
+      },
+      {
+       "value": "ProductID"
+      },
+      {
+       "value": "Quantity"
+      },
+      {
+       "value": "SaleDate"
+      }
+     ],
+     "from": "Sales.MarchSales",
+     "where": {
+      "eq": [
+       "Region",
+       {
+        "literal": "North"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  "insert": "Sales.SummaryReport"
+ },
+ {
+  "columns": [
+   "KUNNR",
+   "BUSN_FRMT_CDV",
+   "BUSN_FRMT_NM",
+   "BUSN_SGMNT_CDV",
+   "BUSN_SGMNT_NM",
+   "BUSN_SUB_SGMNT_CDV",
+   "BUSN_SUB_SGMNT_NM",
+   "CLLCTN_TYP_CDV",
+   "CLLCTN_TYP_NM",
+   "CLSTR_CDV",
+   "CLSTR_NM",
+   "CUST_INVC_NM",
+   "CUST_STOR_SIZE_CDV",
+   "CUST_STOR_SIZE_NM",
+   "CUST_TEAM_CDV",
+   "CUST_TEAM_NM",
+   "CUST_TYP_CDV",
+   "CUST_TYP_NM",
+   "DIVSN_CDV",
+   "DIVSN_NM",
+   "DSTRCT_CDV",
+   "DSTRCT_NM",
+   "HRCHY_SLS_CHN_ID",
+   "HRCHY_SLS_GRP_ID",
+   "OCC_CUST_STTS_CDV",
+   "OCC_CUST_STTS_NM",
+   "OMEGA_CUST_STTS_CDV",
+   "OMEGA_CUST_STTS_NM",
+   "OMEGA_INCTVTN_DT",
+   "PAYR_KUNNR",
+   "PEPSI_CNTCT_NM",
+   "PRGRM_CDV",
+   "PRGRM_NM",
+   "RGN_CDV",
+   "RGN_NM",
+   "SLOUT_CHN_GRP_ID",
+   "SLOUT_FRMT_NM",
+   "SLOUT_RGN_ID",
+   "SLOUT_SLS_COORDR_ID",
+   "SLSMN_RTE_ID",
+   "STICC_CUST_STTS_CDV",
+   "STICC_CUST_STTS_NM",
+   "STOR_NM",
+   "TRD_CHNL_CDV",
+   "TRD_CHNL_NM",
+   "SYS_LAST_MODIFIED_DATE",
+   "DW_SYS_ID",
+   "DW_BTCH_ID",
+   "DW_STEP_ID",
+   "DW_CRTD_DTM",
+   "DW_UPDT_DTM"
+  ],
+  "query": {
+   "select": [
+    {
+     "value": "KUNNR"
+    },
+    {
+     "value": "BUSN_FRMT_CDV"
+    },
+    {
+     "value": "BUSN_FRMT_NM"
+    },
+    {
+     "value": "BUSN_SGMNT_CDV"
+    },
+    {
+     "value": "BUSN_SGMNT_NM"
+    },
+    {
+     "value": "BUSN_SUB_SGMNT_CDV"
+    },
+    {
+     "value": "BUSN_SUB_SGMNT_NM"
+    },
+    {
+     "value": "CLLCTN_TYP_CDV"
+    },
+    {
+     "value": "CLLCTN_TYP_NM"
+    },
+    {
+     "value": "CLSTR_CDV"
+    },
+    {
+     "value": "CLSTR_NM"
+    },
+    {
+     "value": "CUST_INVC_NM"
+    },
+    {
+     "value": "CUST_STOR_SIZE_CDV"
+    },
+    {
+     "value": "CUST_STOR_SIZE_NM"
+    },
+    {
+     "value": "CUST_TEAM_CDV"
+    },
+    {
+     "value": "CUST_TEAM_NM"
+    },
+    {
+     "value": "CUST_TYP_CDV"
+    },
+    {
+     "value": "CUST_TYP_NM"
+    },
+    {
+     "value": "DIVSN_CDV"
+    },
+    {
+     "value": "DIVSN_NM"
+    },
+    {
+     "value": "DSTRCT_CDV"
+    },
+    {
+     "value": "DSTRCT_NM"
+    },
+    {
+     "value": "HRCHY_SLS_CHN_ID"
+    },
+    {
+     "value": "HRCHY_SLS_GRP_ID"
+    },
+    {
+     "value": "OCC_CUST_STTS_CDV"
+    },
+    {
+     "value": "OCC_CUST_STTS_NM"
+    },
+    {
+     "value": "OMEGA_CUST_STTS_CDV"
+    },
+    {
+     "value": "OMEGA_CUST_STTS_NM"
+    },
+    {
+     "value": "OMEGA_INCTVTN_DT"
+    },
+    {
+     "value": "PAYR_KUNNR"
+    },
+    {
+     "value": "PEPSI_CNTCT_NM"
+    },
+    {
+     "value": "PRGRM_CDV"
+    },
+    {
+     "value": "PRGRM_NM"
+    },
+    {
+     "value": "RGN_CDV"
+    },
+    {
+     "value": "RGN_NM"
+    },
+    {
+     "value": "SLOUT_CHN_GRP_ID"
+    },
+    {
+     "value": "SLOUT_FRMT_NM"
+    },
+    {
+     "value": "SLOUT_RGN_ID"
+    },
+    {
+     "value": "SLOUT_SLS_COORDR_ID"
+    },
+    {
+     "value": "SLSMN_RTE_ID"
+    },
+    {
+     "value": "STICC_CUST_STTS_CDV"
+    },
+    {
+     "value": "STICC_CUST_STTS_NM"
+    },
+    {
+     "value": "STOR_NM"
+    },
+    {
+     "value": "TRD_CHNL_CDV"
+    },
+    {
+     "value": "TRD_CHNL_NM"
+    },
+    {
+     "value": "SYS_LAST_MODIFIED_DATE"
+    },
+    {
+     "value": 371
+    },
+    {
+     "value": "DW_BTCH_ID"
+    },
+    {
+     "value": "DW_STEP_ID"
+    },
+    {
+     "value": {
+      "current_timestamp": 0
+     }
+    },
+    {
+     "value": {
+      "current_timestamp": 0
+     }
+    }
+   ],
+   "from": "SAP_CUST_EXTNSN"
+  },
+  "insert": "PRJ_INTL_DB_WORK.MPMF_SAP_CUST_EXTNSN_HSTRY"
+ },
+ {
+  "query": {
+   "select": [
+    {
+     "value": "a.UserGroup"
+    },
+    {
+     "value": "a.UserID"
+    },
+    {
+     "value": "b.TransactionDate"
+    },
+    {
+     "value": "c.SessionEnd"
+    },
+    {
+     "value": "b.CustomerID"
+    },
+    {
+     "name": "SegmentInfo",
+     "value": {
+      "substr": [
+       {
+        "upper": {
+         "trim": {
+          "concat": [
+           "a.MonthData",
+           {
+            "literal": " "
+           },
+           "b.TransactionDate"
+          ]
+         }
+        }
+       },
+       1,
+       50
+      ]
+     }
+    },
+    {
+     "name": "Campaign",
+     "value": {
+      "literal": "Campaign Alpha"
+     }
+    }
+   ],
+   "from": [
+    {
+     "value": "Marketing.UserSegments",
+     "name": "a"
+    },
+    {
+     "inner join": {
+      "value": "Sales.TransactionLogs",
+      "name": "b"
+     },
+     "on": {
+      "eq": [
+       "a.CustomerID",
+       "b.CustomerID"
+      ]
+     }
+    },
+    {
+     "left outer join": {
+      "value": "Analytics.SessionLogs",
+      "name": "c"
+     },
+     "on": {
+      "and": [
+       {
+        "eq": [
+         "a.CustomerID",
+         "c.CustomerID"
+        ]
+       },
+       {
+        "gte": [
+         "b.TransactionDate",
+         "a.StartDate"
+        ]
+       },
+       {
+        "lte": [
+         "b.TransactionDate",
+         "a.EndDate"
+        ]
+       },
+       {
+        "lte": [
+         "b.TransactionDate",
+         "c.SessionEnd"
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  },
+  "insert": "Analytics.ReportData"
+ },
+ {
+  "query": {
+   "select": [
+    {
+     "value": "x.Region"
+    },
+    {
+     "value": "x.AccountID"
+    },
+    {
+     "value": "y.PaymentStart"
+    },
+    {
+     "value": "z.PaymentEnd"
+    },
+    {
+     "value": "y.ClientID"
+    },
+    {
+     "name": "QuarterData",
+     "value": {
+      "substr": [
+       "x.Quarter",
+       1,
+       100
+      ]
+     }
+    },
+    {
+     "name": "Campaign",
+     "value": {
+      "literal": "Beta Promo"
+     }
+    }
+   ],
+   "from": [
+    {
+     "value": "Operations.Accounts",
+     "name": "x"
+    },
+    {
+     "inner join": {
+      "value": "Finance.Payments",
+      "name": "y"
+     },
+     "on": {
+      "eq": [
+       "x.ClientID",
+       "y.ClientID"
+      ]
+     }
+    },
+    {
+     "left outer join": {
+      "value": "Finance.PaymentSchedules",
+      "name": "z"
+     },
+     "on": {
+      "and": [
+       {
+        "eq": [
+         "y.ClientID",
+         "z.ClientID"
+        ]
+       },
+       {
+        "gte": [
+         "y.PaymentStart",
+         "x.StartPeriod"
+        ]
+       },
+       {
+        "lte": [
+         "y.PaymentStart",
+         "x.EndPeriod"
+        ]
+       },
+       {
+        "lte": [
+         "y.PaymentStart",
+         "z.PaymentEnd"
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "inner join": {
+      "value": "Finance.ClientDetails",
+      "name": "w"
+     },
+     "on": {
+      "eq": [
+       "y.ClientID",
+       "w.ClientID"
+      ]
+     }
+    }
+   ]
+  },
+  "insert": "Finance.BillingData"
+ },
+ {
+  "query": {
+   "select": [
+    {
+     "value": "e.Department"
+    },
+    {
+     "value": "e.EmployeeID"
+    },
+    {
+     "value": "f.JoinDate"
+    },
+    {
+     "value": "g.LeaveDate"
+    },
+    {
+     "value": "f.PersonalID"
+    },
+    {
+     "name": "YearData",
+     "value": {
+      "substr": [
+       "e.FiscalYear",
+       1,
+       70
+      ]
+     }
+    },
+    {
+     "name": "Campaign",
+     "value": {
+      "literal": "Recruitment Drive"
+     }
+    }
+   ],
+   "from": [
+    {
+     "value": "PeopleManagement.EmployeeData",
+     "name": "e"
+    },
+    {
+     "inner join": {
+      "value": "HR.Onboarding",
+      "name": "f"
+     },
+     "on": {
+      "eq": [
+       "e.PersonalID",
+       "f.PersonalID"
+      ]
+     }
+    },
+    {
+     "left outer join": {
+      "value": "HR.LeaveRecords",
+      "name": "g"
+     },
+     "on": {
+      "and": [
+       {
+        "eq": [
+         "f.PersonalID",
+         "g.PersonalID"
+        ]
+       },
+       {
+        "gte": [
+         "f.JoinDate",
+         "e.StartWindow"
+        ]
+       },
+       {
+        "lte": [
+         "f.JoinDate",
+         "e.EndWindow"
+        ]
+       },
+       {
+        "lte": [
+         "f.JoinDate",
+         "g.LeaveDate"
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "inner join": {
+      "value": "HR.Performance",
+      "name": "h"
+     },
+     "on": {
+      "eq": [
+       "f.PersonalID",
+       "h.PersonalID"
+      ]
+     }
+    },
+    {
+     "left outer join": {
+      "value": "HR.Benefits",
+      "name": "i"
+     },
+     "on": {
+      "eq": [
+       "h.PersonalID",
+       "i.PersonalID"
+      ]
+     }
+    }
+   ]
+  },
+  "insert": "HR.EmployeeRecords"
+ },
+ {
+  "query": {
+   "select": [
+    {
+     "value": "d.LocationGroup"
+    },
+    {
+     "value": "d.ItemID"
+    },
+    {
+     "value": "h.ShipmentStart"
+    },
+    {
+     "value": "i.ShipmentEnd"
+    },
+    {
+     "value": "h.SupplierID"
+    },
+    {
+     "name": "SeasonInfo",
+     "value": {
+      "substr": [
+       "d.Season",
+       1,
+       80
+      ]
+     }
+    },
+    {
+     "name": "Campaign",
+     "value": {
+      "literal": "Distribution Campaign"
+     }
+    }
+   ],
+   "from": [
+    {
+     "value": "Inventory.ItemRecords",
+     "name": "d"
+    },
+    {
+     "inner join": {
+      "value": "Logistics.ShipmentLog",
+      "name": "h"
+     },
+     "on": {
+      "eq": [
+       "d.SupplierID",
+       "h.SupplierID"
+      ]
+     }
+    },
+    {
+     "left outer join": {
+      "value": "Logistics.SupplySchedule",
+      "name": "i"
+     },
+     "on": {
+      "and": [
+       {
+        "eq": [
+         "h.SupplierID",
+         "i.SupplierID"
+        ]
+       },
+       {
+        "gte": [
+         "h.ShipmentStart",
+         "d.AvailabilityStart"
+        ]
+       },
+       {
+        "lte": [
+         "h.ShipmentStart",
+         "d.AvailabilityEnd"
+        ]
+       },
+       {
+        "lte": [
+         "h.ShipmentStart",
+         "i.ShipmentEnd"
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "inner join": {
+      "value": "Logistics.SupplierDetails",
+      "name": "j"
+     },
+     "on": {
+      "eq": [
+       "h.SupplierID",
+       "j.SupplierID"
+      ]
+     }
+    },
+    {
+     "left outer join": {
+      "value": "Logistics.ShipmentTracking",
+      "name": "k"
+     },
+     "on": {
+      "eq": [
+       "j.SupplierID",
+       "k.SupplierID"
+      ]
+     }
+    },
+    {
+     "inner join": {
+      "value": "Logistics.InventoryStatus",
+      "name": "l"
+     },
+     "on": {
+      "eq": [
+       "k.SupplierID",
+       "l.SupplierID"
+      ]
+     }
+    }
+   ]
+  },
+  "insert": "Logistics.SupplyData"
+ },
+ {
+  "query": {
+   "select": [
+    {
+     "value": "p.ProjectCategory"
+    },
+    {
+     "value": "p.ProjectID"
+    },
+    {
+     "value": "r.TestStart"
+    },
+    {
+     "value": "s.TestEnd"
+    },
+    {
+     "value": "r.ResearcherID"
+    },
+    {
+     "name": "PhaseData",
+     "value": {
+      "substr": [
+       "p.StudyPhase",
+       1,
+       90
+      ]
+     }
+    },
+    {
+     "name": "Campaign",
+     "value": {
+      "literal": "Analysis Campaign"
+     }
+    }
+   ],
+   "from": [
+    {
+     "value": "Research.StudyProjects",
+     "name": "p"
+    },
+    {
+     "inner join": {
+      "value": "Research.TestRecords",
+      "name": "r"
+     },
+     "on": {
+      "eq": [
+       "p.ResearcherID",
+       "r.ResearcherID"
+      ]
+     }
+    },
+    {
+     "left outer join": {
+      "value": "Research.ResultLogs",
+      "name": "s"
+     },
+     "on": {
+      "and": [
+       {
+        "eq": [
+         "r.ResearcherID",
+         "s.ResearcherID"
+        ]
+       },
+       {
+        "gte": [
+         "r.TestStart",
+         "p.PlannedStart"
+        ]
+       },
+       {
+        "lte": [
+         "r.TestStart",
+         "p.PlannedEnd"
+        ]
+       },
+       {
+        "lte": [
+         "r.TestStart",
+         "s.TestEnd"
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "inner join": {
+      "value": "Research.ResearcherDetails",
+      "name": "t"
+     },
+     "on": {
+      "eq": [
+       "r.ResearcherID",
+       "t.ResearcherID"
+      ]
+     }
+    },
+    {
+     "left outer join": {
+      "value": "Research.ProjectFunding",
+      "name": "u"
+     },
+     "on": {
+      "eq": [
+       "t.ResearcherID",
+       "u.ResearcherID"
+      ]
+     }
+    },
+    {
+     "inner join": {
+      "value": "Research.LabRecords",
+      "name": "v"
+     },
+     "on": {
+      "eq": [
+       "u.ResearcherID",
+       "v.ResearcherID"
+      ]
+     }
+    },
+    {
+     "left outer join": {
+      "value": "Research.EquipmentLogs",
+      "name": "w"
+     },
+     "on": {
+      "eq": [
+       "v.ResearcherID",
+       "w.ResearcherID"
+      ]
+     }
+    }
+   ]
+  },
+  "insert": "Research.DataCollection"
+ },
+ {
+  "create table": {
+   "name": "PRJ_INTL_DB_WORK.MPMF_SAP_CUST_EXTNSN_HSTRY",
+   "query": {
+    "select": [
+     {
+      "value": "KUNNR"
+     },
+     {
+      "value": "BUSN_FRMT_CDV"
+     },
+     {
+      "value": "BUSN_FRMT_NM"
+     },
+     {
+      "value": "BUSN_SGMNT_CDV"
+     },
+     {
+      "value": "BUSN_SGMNT_NM"
+     },
+     {
+      "value": "BUSN_SUB_SGMNT_CDV"
+     },
+     {
+      "value": "BUSN_SUB_SGMNT_NM"
+     },
+     {
+      "value": "CLLCTN_TYP_CDV"
+     },
+     {
+      "value": "CLLCTN_TYP_NM"
+     },
+     {
+      "value": "CLSTR_CDV"
+     },
+     {
+      "value": "CLSTR_NM"
+     },
+     {
+      "value": "CUST_INVC_NM"
+     },
+     {
+      "value": "CUST_STOR_SIZE_CDV"
+     },
+     {
+      "value": "CUST_STOR_SIZE_NM"
+     },
+     {
+      "value": "CUST_TEAM_CDV"
+     },
+     {
+      "value": "CUST_TEAM_NM"
+     },
+     {
+      "value": "CUST_TYP_CDV"
+     },
+     {
+      "value": "CUST_TYP_NM"
+     },
+     {
+      "value": "DIVSN_CDV"
+     },
+     {
+      "value": "DIVSN_NM"
+     },
+     {
+      "value": "DSTRCT_CDV"
+     },
+     {
+      "value": "DSTRCT_NM"
+     },
+     {
+      "value": "HRCHY_SLS_CHN_ID"
+     },
+     {
+      "value": "HRCHY_SLS_GRP_ID"
+     },
+     {
+      "value": "OCC_CUST_STTS_CDV"
+     },
+     {
+      "value": "OCC_CUST_STTS_NM"
+     },
+     {
+      "value": "OMEGA_CUST_STTS_CDV"
+     },
+     {
+      "value": "OMEGA_CUST_STTS_NM"
+     },
+     {
+      "value": "OMEGA_INCTVTN_DT"
+     },
+     {
+      "value": "PAYR_KUNNR"
+     },
+     {
+      "value": "PEPSI_CNTCT_NM"
+     },
+     {
+      "value": "PRGRM_CDV"
+     },
+     {
+      "value": "PRGRM_NM"
+     },
+     {
+      "value": "RGN_CDV"
+     },
+     {
+      "value": "RGN_NM"
+     },
+     {
+      "value": "SLOUT_CHN_GRP_ID"
+     },
+     {
+      "value": "SLOUT_FRMT_NM"
+     },
+     {
+      "value": "SLOUT_RGN_ID"
+     },
+     {
+      "value": "SLOUT_SLS_COORDR_ID"
+     },
+     {
+      "value": "SLSMN_RTE_ID"
+     },
+     {
+      "value": "STICC_CUST_STTS_CDV"
+     },
+     {
+      "value": "STICC_CUST_STTS_NM"
+     },
+     {
+      "value": "STOR_NM"
+     },
+     {
+      "value": "TRD_CHNL_CDV"
+     },
+     {
+      "value": "TRD_CHNL_NM"
+     },
+     {
+      "value": "SYS_LAST_MODIFIED_DATE"
+     },
+     {
+      "value": "DW_SYS_ID"
+     },
+     {
+      "value": "DW_BTCH_ID"
+     },
+     {
+      "value": "DW_STEP_ID"
+     },
+     {
+      "value": "DW_CRTD_DTM"
+     },
+     {
+      "value": "DW_UPDT_DTM"
+     }
+    ],
+    "from": "SAP_CUST_EXTNSN"
+   }
+  }
+ },
+ {
+  "query": {
+   "select": [
+    {
+     "value": "Corporate_Customer_ID"
+    },
+    {
+     "value": "SiteID"
+    },
+    {
+     "value": "SiteGroup"
+    }
+   ],
+   "from": "CorpMktg.T1"
+  },
+  "insert": "CorpMktg.T2"
+ },
+ {
+  "query": {
+   "select": [
+    {
+     "value": "Corporate_Customer_ID"
+    },
+    {
+     "value": "SiteID"
+    }
+   ],
+   "from": "CorpMktg.T2"
+  },
+  "insert": "CorpMktg.T3019"
+ },
+ {
+  "columns": [
+   "Corporate_Customer_ID",
+   "SiteID",
+   "SiteGroup"
+  ],
+  "query": {
+   "select": [
+    {
+     "value": "Corporate_Customer_ID"
+    },
+    {
+     "value": "SiteID"
+    },
+    {
+     "value": "SiteGroup"
+    }
+   ],
+   "from": "CorpMktg.T3"
+  },
+  "insert": "CorpMktg.T4"
+ },
+ {
+  "columns": [
+   "Corporate_Customer_ID",
+   "SiteID",
+   "SiteGroup"
+  ],
+  "query": {
+   "select": {
+    "all_columns": {}
+   },
+   "from": "CorpMktg.T4"
+  },
+  "insert": "CorpMktg.T5"
+ },
+ {
+  "columns": [
+   "Trip_Name",
+   "Customer_ID",
+   "Trip_Start_Date",
+   "Trip_End_Date",
+   "Site_Code",
+   "Site_Description",
+   "Promo_Code",
+   "Site_Group",
+   "Campaign_Name",
+   "Phone_No"
+  ],
+  "query": {
+   "select": [
+    {
+     "name": "Trip_Name",
+     "value": {
+      "concat": [
+       "a.TripName",
+       {
+        "literal": " "
+       },
+       "b.TripName"
+      ]
+     }
+    },
+    {
+     "name": "Customer_ID",
+     "value": "a.Corporate_Customer_ID"
+    },
+    {
+     "value": "b.TripStart"
+    },
+    {
+     "value": "c.TripEnd"
+    },
+    {
+     "value": {
+      "cast": [
+       "a.SiteID",
+       {
+        "varchar": 15
+       }
+      ]
+     },
+     "name": "Site_Code"
+    },
+    {
+     "name": "Site_Description",
+     "value": {
+      "substr": [
+       "a.SiteDesc",
+       1,
+       100
+      ]
+     }
+    },
+    {
+     "value": {
+      "trim": "a.Promo_Cd"
+     },
+     "name": "Promo_Code"
+    },
+    {
+     "name": "Site_Group",
+     "value": "a.SiteGroup"
+    },
+    {
+     "name": "Campaign",
+     "value": {
+      "literal": "06 - Jan 2024 Group"
+     }
+    },
+    {
+     "name": "Phone_No",
+     "value": {
+      "coalesce": [
+       "a.ph_no",
+       "b.ph_no",
+       {
+        "literal": "Phone# not available"
+       }
+      ]
+     }
+    }
+   ],
+   "from": [
+    {
+     "value": "CorpMktg.T5",
+     "name": "a"
+    },
+    {
+     "inner join": {
+      "value": "CorpMktg.T6",
+      "name": "b"
+     },
+     "on": {
+      "eq": [
+       "a.Corporate_Customer_ID",
+       "b.Corporate_Customer_ID"
+      ]
+     }
+    },
+    {
+     "left outer join": {
+      "value": "CorpMktg.PromotionalTrips_P15",
+      "name": "c"
+     },
+     "on": {
+      "eq": [
+       "a.Corporate_Customer_ID",
+       "c.Corporate_Customer_ID"
+      ]
+     }
+    }
+   ]
+  },
+  "insert": "CorpMktg.T7"
+ },
+ {
+  "columns": [
+   "Sum_Total_Sales",
+   "Avg_Total_Sales",
+   "Min_Total_Sales",
+   "Max_Total_Sales",
+   "Total_Record"
+  ],
+  "query": {
+   "select": [
+    {
+     "value": {
+      "sum": "Total_Sales"
+     }
+    },
+    {
+     "value": {
+      "avg": "Total_Sales"
+     }
+    },
+    {
+     "value": {
+      "min": "Total_Sales"
+     }
+    },
+    {
+     "value": {
+      "max": "Total_Sales"
+     }
+    },
+    {
+     "value": {
+      "count": "*"
+     }
+    }
+   ],
+   "from": "CorpMktg.T7",
+   "where": {
+    "gte": [
+     "Sales_Date",
+     {
+      "literal": "2016-01-01"
+     }
+    ]
+   }
+  },
+  "insert": "CorpMktg.T8"
+ },
+ {
+  "query": {
+   "select": [
+    {
+     "value": "Corporate_Customer_ID"
+    },
+    {
+     "value": "SiteGroup"
+    }
+   ],
+   "from": "CorpMktg.MLNewSeg_Coded_P0"
+  },
+  "insert": "CorpMktg.T10"
+ },
+ {
+  "query": {
+   "select": [
+    {
+     "value": "a.Corporate_Customer_ID"
+    },
+    {
+     "value": "a.SiteGroup"
+    },
+    {
+     "value": "b.Departure_Dt"
+    },
+    {
+     "value": "c.Expected_Start_Dt"
+    }
+   ],
+   "from": [
+    {
+     "value": "CorpMktg.T8",
+     "name": "a"
+    },
+    {
+     "inner join": {
+      "value": "CorpMktg.T9",
+      "name": "b"
+     },
+     "on": {
+      "and": [
+       {
+        "eq": [
+         "a.Corporate_Customer_ID",
+         "b.Corporate_Customer_ID"
+        ]
+       },
+       {
+        "gte": [
+         "b.Departure_Dt",
+         "a.TripStart"
+        ]
+       },
+       {
+        "lte": [
+         "b.Departure_Dt",
+         "a.TripEnd"
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "left outer join": {
+      "value": "CorpMktg.PromotionalTrips_P0",
+      "name": "c"
+     },
+     "on": {
+      "eq": [
+       "a.Corporate_Customer_ID",
+       "c.Corporate_Customer_ID"
+      ]
+     }
+    }
+   ]
+  },
+  "insert": "CorpMktg.ML_NewSeg_CodingPrep_NR_P0"
+ },
+ {
+  "query": {
+   "select": [
+    {
+     "value": "a.Corporate_Customer_ID"
+    },
+    {
+     "value": "a.SiteGroup"
+    }
+   ],
+   "from": [
+    {
+     "value": "CorpMktg.T10",
+     "name": "a"
+    },
+    {
+     "inner join": {
+      "value": "CorpMktg.T11",
+      "name": "b"
+     },
+     "on": {
+      "eq": [
+       "a.Corporate_Customer_ID",
+       "b.Corporate_Customer_ID"
+      ]
+     }
+    }
+   ]
+  },
+  "insert": "CorpMktg.T12"
+ },
+ {
+  "query": {
+   "select": [
+    {
+     "value": "a.Corporate_Customer_ID"
+    },
+    {
+     "value": "a.SiteGroup"
+    }
+   ],
+   "from": [
+    {
+     "value": "CorpMktg.T12",
+     "name": "a"
+    },
+    {
+     "inner join": {
+      "value": "CorpMktg.T13",
+      "name": "b"
+     },
+     "on": {
+      "eq": [
+       "a.Corporate_Customer_ID",
+       "b.Corporate_Customer_ID"
+      ]
+     }
+    }
+   ]
+  },
+  "insert": "CorpMktg.T14"
+ }
+]
